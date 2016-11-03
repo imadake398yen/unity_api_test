@@ -12,7 +12,8 @@ public class Connection : MonoBehaviour {
 		userData.name = "falcon";
 		userData.age = 23;
 		string json = JsonMapper.ToJson(userData);
-		var form = new WWWForm ("jsondata", json);
+		var form = new WWWForm ();
+		form.AddField("jsondata", json);
 		var www = new WWW (url, form);
 		yield return www;
 		print (www.text);
